@@ -54,10 +54,10 @@ var copyNodeModuleOption = {
 }
 
 //复制依赖的node_modules文件
-gulp.task('copyNodeModules', () => {
-  return gulp
-    .src(nodeModulesCopyPath, copyNodeModuleOption)
-    .pipe(gulp.dest(dist))
+gulp.task('copyNodeModules', cb => {
+  return nodeModulesCopyPath.length > 0
+    ? gulp.src(nodeModulesCopyPath, copyNodeModuleOption).pipe(gulp.dest(dist))
+    : cb()
 })
 //复制依赖的node_modules文件(只改动有变动的文件）
 gulp.task('copyNodeModulesChange', () => {
@@ -132,7 +132,8 @@ gulp.task('tsCompile', function() {
 gulp.task('watch', () => {
   gulp.watch(tsPath, gulp.series('tsCompile'))
   var watcher = gulp.watch(copyPath, gulp.series('copyChange'))
-  gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'))
+  nodeModulesCopyPath.length > 0 &&
+    gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'))
   gulp.watch(watchLessPath, gulp.series('less')) //Change
   watcher.on('change', function(event) {
     if (event.type === 'deleted') {
