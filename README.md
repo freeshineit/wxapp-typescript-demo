@@ -24,28 +24,30 @@ npm run build
 ## 项目结构
 
 ```
-├─dist                              //编译之后的项目文件（带 sorcemap，支持生产环境告警定位）
-├─src                               //开发目录
-│  │  app.ts                        //小程序起始文件
-│  │  app.json
-│  │  app.less
-│  │
-│  ├─assets                     	//静态资源
-│     ├─less						//公共less
-│     ├─img						    //图片资源
-│  ├─components                     //组件
-│  ├─utils                           //工具库
-│  ├─config                           //配置文档
-│     ├─cgi-config.ts                //cgi接口配置
-│     ├─global-config.ts                //全局配置
-│  ├─pages                          //小程序相关页面
-│
-│  project.config.json              //小程序配置文件
-│  gulpfile.js                      //工具配置
-│  package.json                     //项目配置
-│  README.md                        //项目说明
-│  tsconfig.json                     //typescript配置
-│  tslint.json                     //代码风格配置
+.
+├── dist                   //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
+├── README.md               //项目说明
+├── gulpfile.js             // gulp 配置
+├── package.json           // 项目说明和开发依赖
+├── project.config.json    // 小程序 配置
+├── src
+│   ├── app.json
+│   ├── app.less           //小程序全局样式
+│   ├── app.ts             //小程序起始文件
+│   ├── components         // 组件
+│   ├── config             // 配置
+│   ├── filter             //  过滤器
+│   ├── pages              // 页面
+│   │   ├── index
+│   ├── templates          //  模版
+│   └── utils              // 工具方法
+├── tsconfig.json         // typescript配置
+├── tslint.json           // 代码风格配置
+├── typings               // ts typings
+│   ├── declaration.d.ts
+│   ├── index.d.ts
+│   ├── lib.wa.es6.d.ts
+│   └── wx
 ```
 
 **注意：`package.json`中的`dependencies`字段，依赖的包会被自动打包到`dist`里。**
@@ -56,5 +58,4 @@ npm run build
 
 - 公共模块写成组件 组件使用定义 `"v-like": "../../components/like/index"` 所组件定义使用`v-`开头
 - 组件的`externalClasses`(外部类) 命名属性都使用`v-class`
-
 - 页面布局一律使用 flex 布局
