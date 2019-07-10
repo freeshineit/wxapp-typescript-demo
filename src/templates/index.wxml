@@ -1,0 +1,6 @@
+<template name='header'>
+    <view class="header">this is footer header</view>
+</template>
+<template name='footer'>
+    <view class="footer">this is footer template</view>
+</template>

@@ -1,14 +1,24 @@
-<!--index.wxml-->
+<!-- index.wxml -->
+<!-- 模版使用 -->
+<import src="../../templates/index.wxml" />
 <view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    <block class="header">
+        <template is="header" />
     </block>
-  </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
-  <button bind:tap="gotoWatch"> 去 watch behavior 页面 </button>
+    <view class="userinfo">
+        <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo">
+            获取头像昵称
+        </button>
+        <block wx:else>
+            <v-image bindtap="bindViewTap" v-class="userinfo-avatar" src="{{userInfo.avatarUrl}}" />
+            <!-- <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image> -->
+            <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+        </block>
+    </view>
+    <view class="usermotto">
+        <text class="user-motto">{{motto}}</text>
+    </view>
+    <block>
+        <template is="footer" />
+    </block>
 </view>

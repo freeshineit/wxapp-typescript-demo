@@ -1,15 +1,15 @@
-小程序 DEMO
+小程序 Start
 
 - 使用 gulp 构建（支持 typescript 和 less）
 - 使用 typescript 编译
 - 使用 tslint + prettier 格式代码规范
 - 使用小程序官方 typing 库
 
-```bash
+```sh
 # 安装依赖
 npm install
 
-# 全局安装依赖
+# 全局安装依赖 (不是必须的)
 npm install gulp prettier typescript --global
 
 # 启动代码
@@ -52,11 +52,9 @@ npm run build
 
 ## 公共库使用说明
 
-### utils/request
+## 规范
 
-通用请求，处理包括 session 过期自动拉取登录接口续期等逻辑。（适用于有单个登录接口来获取 session 的场景）
-使用方式：
+- 公共模块写成组件 组件使用定义 `"v-like": "../../components/like/index"` 所组件定义使用`v-`开头
+- 组件的`externalClasses`(外部类) 命名属性都使用`v-class`
 
-1. 在`config/global-config.ts`文件里，更新`SESSION_KEY`的值（后台接口协议返回 key，例如`"sessionId"`）。
-2. 如果有其他需要全局携带的参数，需要在`utils/request/index.ts`文件里，`dataWithSession`中带上。
-3. 在`config/global-config.ts`文件里，更新`LOGIN_FAIL_CODES`的值（错误码若为该数组中的一个，则会重新拉起登录，再继续发起请求）。
+- 页面布局一律使用 flex 布局

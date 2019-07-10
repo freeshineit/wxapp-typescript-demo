@@ -1,0 +1,24 @@
+.container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 200rpx 0;
+  box-sizing: border-box;
+  position: relative;
+
+  .header,
+  .footer {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: bisque;
+  }
+
+  .footer {
+    bottom: 0;
+    top: unset;
+  }
+}

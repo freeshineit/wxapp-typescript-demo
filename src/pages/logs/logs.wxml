@@ -1,7 +1,8 @@
-<!--logs.wxml-->
+<!-- logs.wxml -->
+<!-- 过滤器 -->
+<wxs module="dateFr" src="../../filter/index.wxs"></wxs>
 <view class="container log-list">
-  <block wx:for="{{logsAfterComputed}}">
-    <text class="log-item">{{index + 1}}. {{item.log}}</text>
-    <text class="log-item">{{index + 1}}. {{item.logAfterCompute}}</text>
-  </block>
+    <block wx:for="{{logs}}" wx:for-item="log" wx:key="{{index}}">
+        <text class="log-item">{{index + 1}}. {{dateFr.getDate(log, ':')}} {{log}}</text>
+    </block>
 </view>
