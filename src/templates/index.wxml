@@ -1,5 +1,5 @@
 <template name='header'>
-    <view class="header">this is footer header</view>
+    <view class="header">this is header template</view>
 </template>
 <template name='footer'>
     <view class="footer">this is footer template</view>
