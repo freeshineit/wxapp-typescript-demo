@@ -1,5 +1,5 @@
 {
-  "name": "wxapp-typescript",
+  "name": "wxapp-typescript-start",
   "version": "1.1.0",
   "scripts": {
     "dev": "gulp --continue",
