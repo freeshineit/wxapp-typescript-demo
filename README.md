@@ -63,3 +63,5 @@ npm run build
 - 公共模块写成组件 组件使用定义 `"v-like": "../../components/like/index"` 所组件定义使用`v-`开头
 - 组件的`externalClasses`(外部类) 命名属性都使用`v-class`
 - 页面布局一律使用 flex 布局
+
+### npm 的使用请切换分支[has_npm](https://github.com/freeshineit/wxapp-typescript-start/tree/has_npm)
