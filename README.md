@@ -143,3 +143,5 @@ Component({
 代码来源[miniprogram-computed](https://github.com/wechat-miniprogram/computed)
 
 注意 ⚠️： 使用前需要先构建 [工具] => [构建 npm]
+
+### npm 的使用请切换分支[has_npm](https://github.com/freeshineit/wxapp-typescript-start/tree/has_npm)
