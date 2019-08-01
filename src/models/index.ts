@@ -7,7 +7,7 @@ class Index extends Request {
 
   public getIndexData() {
     return this.request({
-      url: ''
+      url: '/v1/photos?feature=popular'
     })
   }
 }
