@@ -15,7 +15,7 @@ npm install gulp prettier typescript --global
 # 启动代码
 npm run dev
 
-# 需要在小程序开发工具里【工具】-【构建npm】
+# 需要在小程序开发工具里【工具】-【构建npm】 （如果使用到npm ）
 
 # 打包代码
 npm run build
@@ -26,8 +26,8 @@ npm run build
 ```
 .
 ├── dist                   //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
-├── README.md               //项目说明
-├── gulpfile.js             // gulp 配置
+├── README.md              //项目说明
+├── gulpfile.js            // gulp 配置
 ├── package.json           // 项目说明和开发依赖
 ├── project.config.json    // 小程序 配置
 ├── src
@@ -36,14 +36,18 @@ npm run build
 │   ├── app.ts             //小程序起始文件
 │   ├── components         // 组件
 │   ├── config             // 配置
-│   ├── filter             //  过滤器
+│   ├── models             // 接口模型
+│   ├── filter             // 过滤器
+│   ├── templates          // 模版
+│   ├── images             // 图片
 │   ├── pages              // 页面
-│   │   ├── index
-│   ├── templates          //  模版
+│   │   ├── index          // 首页
+│   │   ├── logs           // 日志页
+│   │   └── request        // 简单调用接口页面
 │   └── utils              // 工具方法
-├── tsconfig.json         // typescript配置
-├── tslint.json           // 代码风格配置
-├── typings               // ts typings
+├── tsconfig.json          // typescript配置
+├── tslint.json            // 代码风格配置
+├── typings                // ts typings
 │   ├── declaration.d.ts
 │   ├── index.d.ts
 │   ├── lib.wa.es6.d.ts
