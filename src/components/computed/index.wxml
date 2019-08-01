@@ -1,0 +1,7 @@
+<view class="container">
+    <view>propA = {{propA}}</view>
+    <view>A = {{a}}</view>
+    <view>B = {{b}}</view>
+    <view>SUM = {{sum}}</view>
+    <button bind:tap="handleTap">click</button>
+</view>

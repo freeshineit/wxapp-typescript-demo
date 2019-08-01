@@ -1,0 +1,4 @@
+<view class="container">
+    <button bind:tap="handleUpdate">点击</button>
+    <v-computed bind:update="handleUpdate" propA="{{propA}}" />
+</view>
