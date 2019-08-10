@@ -1,28 +1,38 @@
-var gulp = require('gulp')
-var path = require('path')
-var rename = require('gulp-rename')
-var less = require('gulp-less')
-var postcss = require('gulp-postcss')
-var changed = require('gulp-changed')
-var autoprefixer = require('autoprefixer')
-var clear = require('gulp-clean')
-var del = require('del')
-var ts = require('gulp-typescript')
-var tsProject = ts.createProject('tsconfig.json')
-var sourcemaps = require('gulp-sourcemaps')
-var jsonTransform = require('gulp-json-transform')
-var projectConfig = require('./package.json')
+const gulp = require('gulp')
+const path = require('path')
+const rename = require('gulp-rename')
+const less = require('gulp-less')
+const postcss = require('gulp-postcss')
+const imagemin = require('gulp-imagemin')
+const changed = require('gulp-changed')
+const autoprefixer = require('autoprefixer')
+const clear = require('gulp-clean')
+const del = require('del')
+const ts = require('gulp-typescript')
+const tsProject = ts.createProject('tsconfig.json')
+const sourcemaps = require('gulp-sourcemaps')
+const jsonTransform = require('gulp-json-transform')
+const projectConfig = require('./package.json')
 
 //项目路径
-var option = {
+const option = {
   base: 'src',
   allowEmpty: true
 }
-var dist = __dirname + '/dist'
-var copyPath = ['src/**/!(_)*.*', '!src/**/*.less', '!src/**/*.ts']
-var lessPath = ['src/**/*.less', 'src/app.less']
-var watchLessPath = ['src/**/*.less', 'src/css/**/*.less', 'src/app.less']
-var tsPath = ['src/**/*.ts', 'src/app.ts']
+const dist = __dirname + '/dist'
+const copyPath = [
+  'src/**/!(_)*.*',
+  '!src/**/*.less',
+  '!src/**/*.ts',
+  '!src/**/*.{png,jpg,jpeg,gif,ico,svg}'
+]
+const imagePath = [
+  'src/images/**/*.{png,jpg,jpeg,gif,ico,svg}',
+  'src/components/**/*.{png,jpg,jpeg,gif,ico,svg}'
+]
+const lessPath = ['src/**/*.less', 'src/app.less']
+const watchLessPath = ['src/**/*.less', 'src/css/**/*.less', 'src/app.less']
+const tsPath = ['src/**/*.ts', 'src/app.ts']
 
 //清空目录
 gulp.task('clear', () => {
@@ -33,6 +43,7 @@ gulp.task('clear', () => {
 gulp.task('copy', () => {
   return gulp.src(copyPath, option).pipe(gulp.dest(dist))
 })
+
 //复制不包含less和图片的文件(只改动有变动的文件）
 gulp.task('copyChange', () => {
   return gulp
@@ -66,6 +77,7 @@ gulp.task('copyNodeModulesChange', () => {
     .pipe(changed(dist))
     .pipe(gulp.dest(dist))
 })
+
 // 根据denpende生成package.json
 gulp.task('generatePackageJson', () => {
   return gulp
@@ -77,7 +89,7 @@ gulp.task('generatePackageJson', () => {
         }
       })
     )
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(dist))
 })
 
 //编译less
@@ -98,6 +110,7 @@ gulp.task('less', () => {
     )
     .pipe(gulp.dest(dist))
 })
+
 //编译less(只改动有变动的文件）
 gulp.task('lessChange', () => {
   return gulp
@@ -118,6 +131,22 @@ gulp.task('lessChange', () => {
     .pipe(gulp.dest(dist))
 })
 
+// 压缩image
+gulp.task('images', () => {
+  return gulp
+    .src(imagePath, option)
+    .pipe(changed(dist))
+    .pipe(
+      imagemin({
+        optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
+        progressive: true, //类型：Boolean 默认：false 无损压缩jpg图片
+        interlaced: true, //类型：Boolean 默认：false 隔行扫描gif进行渲染
+        multipass: true //类型：Boolean 默认：false 多次优化svg直到完全优化
+      })
+    )
+    .pipe(gulp.dest(dist))
+})
+
 // 编译
 gulp.task('tsCompile', function() {
   return tsProject
@@ -125,7 +154,7 @@ gulp.task('tsCompile', function() {
     .pipe(sourcemaps.init())
     .pipe(tsProject())
     .js.pipe(sourcemaps.write())
-    .pipe(gulp.dest('dist'))
+    .pipe(gulp.dest(dist))
 })
 
 //监听
@@ -134,6 +163,7 @@ gulp.task('watch', () => {
   var watcher = gulp.watch(copyPath, gulp.series('copyChange'))
   nodeModulesCopyPath.length > 0 &&
     gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'))
+
   gulp.watch(watchLessPath, gulp.series('less')) //Change
   watcher.on('change', function(event) {
     if (event.type === 'deleted') {
@@ -157,6 +187,7 @@ gulp.task(
       'copyNodeModules',
       'generatePackageJson',
       'less',
+      'images',
       'tsCompile'
     ),
     'watch'
@@ -175,6 +206,7 @@ gulp.task(
       'copyNodeModules',
       'generatePackageJson',
       'less',
+      'images',
       'tsCompile'
     )
   )
