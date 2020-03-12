@@ -1,8 +1,8 @@
 //index.js
 //获取应用实例
-import { IMyApp } from '../../app'
+import { IAppOption } from '../../app'
 
-const app = getApp<IMyApp>()
+const app = getApp<IAppOption>()
 
 Page({
   data: {

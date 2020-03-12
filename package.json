@@ -1,6 +1,6 @@
 {
   "name": "wxapp-typescript-start",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "scripts": {
     "dev": "gulp --continue",
     "build": "gulp build",
@@ -9,7 +9,6 @@
   },
   "dependencies": {},
   "devDependencies": {
-    "@types/node": "^12.0.8",
     "autoprefixer": "^9.3.1",
     "del": "^3.0.0",
     "gulp": "^4.0.0",
@@ -25,16 +24,23 @@
     "gulp-text-simple": "^0.4.4",
     "gulp-typescript": "^5.0.1",
     "husky": "^1.1.4",
-    "imagemin-pngquant": "^6.0.0",
+    "lint-staged": "^10.0.8",
+    "miniprogram-api-typings": "^2.10.2",
     "path": "^0.12.7",
     "prettier": "^1.15.2",
     "pretty-quick": "^1.8.0",
     "tslint-config-prettier": "^1.16.0",
-    "typescript": "^3.5.3"
+    "typescript": "^3.8.3"
   },
   "husky": {
     "hooks": {
-      "pre-commit": "pretty-quick --staged"
+      "pre-commit": "lint-staged"
     }
+  },
+  "lint-staged": {
+    "src/**/*.{js,jsx,ts,tsx,json,css,less,scss,md}": [
+      "prettier --write",
+      "git add"
+    ]
   }
 }
