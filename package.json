@@ -2,10 +2,9 @@
   "name": "wxapp-typescript-start",
   "version": "1.2.0",
   "scripts": {
+    "start": "gulp --continue",
     "dev": "gulp --continue",
-    "build": "gulp build",
-    "tsc": "./node_modules/typescript/bin/tsc",
-    "compile": "tsc"
+    "build": "gulp build"
   },
   "dependencies": {},
   "devDependencies": {
