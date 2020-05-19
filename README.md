@@ -32,14 +32,15 @@ npm run build
 ├── project.config.json    // 小程序 配置
 ├── src
 │   ├── app.json
-│   ├── app.less           //小程序全局样式
-│   ├── app.ts             //小程序起始文件
+│   ├── app.less           // 小程序全局样式
+│   ├── app.ts             // 小程序起始文件
 │   ├── components         // 组件
 │   ├── config             // 配置
 │   ├── models             // 接口模型
 │   ├── filter             // 过滤器
 │   ├── templates          // 模版
 │   ├── images             // 图片
+│   ├── types              // 自定义的types
 │   ├── pages              // 页面
 │   │   ├── index          // 首页
 │   │   ├── logs           // 日志页
@@ -48,10 +49,7 @@ npm run build
 ├── tsconfig.json          // typescript配置
 ├── tslint.json            // 代码风格配置
 ├── typings                // ts typings
-│   ├── declaration.d.ts
-│   ├── index.d.ts
-│   ├── lib.wa.es6.d.ts
-│   └── wx
+│   └── index.d.ts
 ```
 
 **注意：`package.json`中的`dependencies`字段，依赖的包会被自动打包到`dist`里。**

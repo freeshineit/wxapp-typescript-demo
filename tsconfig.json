@@ -19,7 +19,7 @@
         "pretty": true,
         "strictPropertyInitialization": true,
         "lib": ["es5", "ES2015"],
-        "typeRoots": ["./typings", "./src/types"]
+        "typeRoots": ["node_modules/miniprogram-api-typings", "./typings", "./src/types"]
     },
     "include": ["./src/**/*.ts"],
     "exclude": ["node_modules"]
