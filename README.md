@@ -37,8 +37,7 @@ npm run build
 
 ## 项目结构
 
-````
-
+```
 .
 ├── dist //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
 ├── src
@@ -83,5 +82,3 @@ npm run build
 ## 框架扩展
 
 [computed](https://developers.weixin.qq.com/miniprogram/dev/extended/utils/computed.html)
-```
-````
