@@ -21,35 +21,51 @@ npm run dev
 npm run build
 ```
 
+## 路由
+
+```js
+{
+  "pages": [
+    "pages/index/index", // 首页 获取用户头像
+    "pages/request/index", // request 简单调用接口页面
+    "pages/logs/index",  // logs demo
+    "pages/style/index", // 样式 demo
+    "pages/lifecycle/index" // 生命周期 demo
+  ]
+}
+```
+
 ## 项目结构
 
-```
+````
+
 .
-├── dist                   //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
+├── dist //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
 ├── src
 │   ├── app.json
-│   ├── app.scss           // 小程序全局样式 微信开发者工具不支持sass less 文件
-│   ├── app.ts             // 小程序起始文件
-│   ├── components         // 组件
-│   ├── config             // 配置
-│   ├── models             // 接口模型
-│   ├── filter             // 过滤器
-│   ├── templates          // 模版
-│   ├── images             // 图片
-│   ├── types              // 自定义的types
-│   ├── pages              // 页面
-│   │   ├── index          // 首页
-│   │   ├── logs           // 日志页
-│   │   └── request        // 简单调用接口页面
-│   └── utils              // 工具方法
-├── README.md              // 项目说明
-├── gulpfile.js            // gulp 配置
-├── package.json           // 项目说明和开发依赖
-├── project.config.json    // 小程序 配置
-├── tsconfig.json          // typescript配置
-├── tslint.json            // 代码风格配置
-├── typings   //ts typings 当前文件没有微信小程序types，类型使用miniprogram-api-typings，微信开发者工具会提示报错
+│   ├── app.scss // 小程序全局样式 微信开发者工具不支持 sass less 文件
+│   ├── app.ts // 小程序起始文件
+│   ├── components // 组件
+│   ├── config // 配置
+│   ├── models // 接口模型
+│   ├── filter // 过滤器
+│   ├── templates // 模版
+│   ├── images // 图片
+│   ├── types // 自定义的 types
+│   ├── pages // 页面
+│   │   ├── index // 首页
+│   │   ├── logs // 日志页
+│   │   └── request // 简单调用接口页面
+│   └── utils // 工具方法
+├── README.md // 项目说明
+├── gulpfile.js // gulp 配置
+├── package.json // 项目说明和开发依赖
+├── project.config.json // 小程序 配置
+├── tsconfig.json // typescript 配置
+├── tslint.json // 代码风格配置
+├── typings //ts typings 当前文件没有微信小程序 types，类型使用 miniprogram-api-typings，微信开发者工具会提示报错
 │   └── index.d.ts
+
 ```
 
 **注意：`package.json`中的`dependencies`字段，依赖的包会被自动打包到`dist`里。**
@@ -63,3 +79,9 @@ npm run build
 - 页面布局一律使用 flex 布局
 
 ### npm 的使用请切换分支[has_npm](https://github.com/freeshineit/wxapp-typescript-start/tree/has_npm)
+
+## 框架扩展
+
+[computed](https://developers.weixin.qq.com/miniprogram/dev/extended/utils/computed.html)
+```
+````
