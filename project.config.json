@@ -69,9 +69,15 @@
 					"scene": null
 				},
 				{
-					"id": -1,
-					"name": "pages/stylesss/index",
-					"pathName": "pages/stylesss/index",
+					"id": 1,
+					"name": "pages/style/index",
+					"pathName": "pages/style/index",
+					"scene": null
+				},
+				{
+					"id": 2,
+					"name": "pages/lifecycle/index",
+					"pathName": "pages/lifecycle/index",
 					"scene": null
 				}
 			]
