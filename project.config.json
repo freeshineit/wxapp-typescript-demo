@@ -5,7 +5,7 @@
 		"ignore": []
 	},
 	"compileType": "miniprogram",
-	"libVersion": "2.8.0",
+	"libVersion": "2.11.0",
 	"appid": "wx173f7884fa2f379e",
 	"setting": {
 		"urlCheck": false,
@@ -13,8 +13,11 @@
 		"postcss": true,
 		"minified": true,
 		"newFeature": true,
+		"coverView": true,
 		"nodeModules": true,
 		"autoAudits": false,
+		"showShadowRootInWxmlPanel": true,
+		"scopeDataCheck": false,
 		"uglifyFileName": true,
 		"checkInvalidKey": true,
 		"checkSiteMap": true,
@@ -30,6 +33,11 @@
 		"qywx_simulator_plugin": "2.4.0"
 	},
 	"projectname": "wxapp-typescript-start",
+	"scripts": {
+		"beforeCompile": "",
+		"beforePreview": "",
+		"beforeUpload": ""
+	},
 	"condition": {
 		"search": {
 			"current": -1,
