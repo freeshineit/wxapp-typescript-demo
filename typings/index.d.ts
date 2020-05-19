@@ -1,1 +1,1 @@
-/// <reference path="./types/index.d.ts" />
+//  小程序的types miniprogram-api-typings
