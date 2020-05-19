@@ -1,25 +1,26 @@
-//index.js
-//获取应用实例
-import { IAppOption } from '../../app'
+// index.ts
 
+import { IAppOption } from '../../types/app'
+
+// 获取应用实例
 const app = getApp<IAppOption>()
 
 Page({
   data: {
-    motto: '点击 “编译” 以构建',
+    motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
-  //事件处理函数
+  // 事件处理函数
   bindViewTap() {
     wx.navigateTo({
-      url: '../logs/index'
+      url: '../logs/logs'
     })
   },
   onLoad() {
     if (app.globalData.userInfo) {
-      this.setData!({
+      this.setData({
         userInfo: app.globalData.userInfo,
         hasUserInfo: true
       })
@@ -27,8 +28,8 @@ Page({
       // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
       // 所以此处加入 callback 以防止这种情况
       app.userInfoReadyCallback = res => {
-        this.setData!({
-          userInfo: res,
+        this.setData({
+          userInfo: res.userInfo,
           hasUserInfo: true
         })
       }
@@ -37,7 +38,7 @@ Page({
       wx.getUserInfo({
         success: res => {
           app.globalData.userInfo = res.userInfo
-          this.setData!({
+          this.setData({
             userInfo: res.userInfo,
             hasUserInfo: true
           })
@@ -45,11 +46,10 @@ Page({
       })
     }
   },
-
   getUserInfo(e: any) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
-    this.setData!({
+    this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })

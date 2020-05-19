@@ -1,11 +1,11 @@
-// app.ts
+/*
+ * @Description:
+ * @Author: ShineShao <xiaoshaoqq@gmail.com>
+ * @Date: 2020-03-12 11:47:08
+ */
 
-export interface IAppOption {
-  globalData: {
-    userInfo?: WechatMiniprogram.UserInfo
-  }
-  userInfoReadyCallback?: WechatMiniprogram.GetUserInfoSuccessCallback
-}
+// app.ts
+import { IAppOption } from './types/app'
 
 App<IAppOption>({
   globalData: {},
