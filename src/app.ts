@@ -3,7 +3,7 @@
  * @Author: ShineShao <xiaoshaoqq@gmail.com>
  * @Date: 2020-03-12 11:47:08
  */
-
+// https://developers.weixin.qq.com/miniprogram/dev/reference/api/App.html
 // app.ts
 import { IAppOption } from './types/app'
 

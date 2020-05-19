@@ -1,0 +1,4 @@
+<!-- lifecycle.wxml -->
+<view class="container">
+    <view>{{text}}</view>
+</view>

@@ -3,6 +3,7 @@
 import { IAppOption } from '../../types/app'
 
 // 获取应用实例
+// https://developers.weixin.qq.com/miniprogram/dev/reference/api/getApp.html
 const app = getApp<IAppOption>()
 
 Page({
