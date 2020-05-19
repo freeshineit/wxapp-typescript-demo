@@ -54,6 +54,10 @@
 		"game": {
 			"list": []
 		},
+		"gamePlugin": {
+			"current": -1,
+			"list": []
+		},
 		"miniprogram": {
 			"current": 0,
 			"list": [
@@ -61,6 +65,13 @@
 					"id": -1,
 					"name": "pages/request/index",
 					"pathName": "pages/request/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/stylesss/index",
+					"pathName": "pages/stylesss/index",
 					"scene": null
 				}
 			]
