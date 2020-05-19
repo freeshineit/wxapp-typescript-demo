@@ -13,6 +13,7 @@ const ts = require('gulp-typescript')
 const tsProject = ts.createProject('tsconfig.json')
 const sourcemaps = require('gulp-sourcemaps')
 const jsonTransform = require('gulp-json-transform')
+const gulpif = require('gulp-if')
 const projectConfig = require('./package.json')
 sass.compiler = require('node-sass')
 
@@ -224,7 +225,7 @@ gulp.task('imagesTask', () => {
 gulp.task('tsTask', function() {
   return tsProject
     .src()
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(process.env.NODE_ENV === 'development', sourcemaps.init()))
     .pipe(tsProject())
     .js.pipe(sourcemaps.write())
     .pipe(gulp.dest(dist))
@@ -234,7 +235,7 @@ gulp.task('tsChangeTask', function() {
   return tsProject
     .src()
     .pipe(changed(tsPath))
-    .pipe(sourcemaps.init())
+    .pipe(gulpif(process.env.NODE_ENV === 'development', sourcemaps.init()))
     .pipe(tsProject())
     .js.pipe(sourcemaps.write())
     .pipe(gulp.dest(dist))
