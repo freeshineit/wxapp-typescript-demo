@@ -11,3 +11,4 @@
 - 添加生命周期 demo
 - 更新样式页面 demo
 - 添加 sitemap.json
+- 添加一些基本的说明
