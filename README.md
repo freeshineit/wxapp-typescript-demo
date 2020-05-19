@@ -1,9 +1,9 @@
 小程序 Start
 
-- 使用 gulp 构建（支持 typescript 和 less）
-- 使用 typescript 编译
-- 使用 tslint + prettier 格式代码规范
-- 使用小程序官方 typing 库
+- 使用 [gulp](https://gulpjs.com/) 构建（支持 [typescript](https://www.typescriptlang.org/) 和 [less](http://lesscss.org/)）
+- 使用 [typescript](https://www.typescriptlang.org/) 编译
+- 使用 [tslint](https://palantir.github.io/tslint/) + [prettier](https://prettier.io/) 格式代码规范
+- 使用 [miniprogram-api-typings](https://www.npmjs.com/package/miniprogram-api-typings) 微信小程序 API 的 `TypeScript` 类型定义文件
 
 ```sh
 # 安装依赖
