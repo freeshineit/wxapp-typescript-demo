@@ -1,6 +1,10 @@
-.editorconfig
+.DS_Store
 node_modules/
-package-lock.json
-yarn.lock
-.vscode/
+# package-lock.json
+# yarn.lock
 dist/
+
+# Log files
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
