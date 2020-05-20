@@ -66,25 +66,32 @@ gulp.task('copyChangeTask', () => {
 // -------------------------------------------------------------------
 
 // --------------------增加dependencies--------------------------------
-var dependencies = projectConfig && projectConfig.dependencies // dependencies配置
-var nodeModulesCopyPath = []
-for (let d in dependencies) {
-  nodeModulesCopyPath.push('node_modules/' + d + '/**/*')
-}
+
+var dependencies = (projectConfig && projectConfig.dependencies) || {} // dependencies配置
+
+const nodeModulesCopyPath = ['node_modules/**/*']
 //项目路径
-var copyNodeModuleOption = {
+const copyNodeModuleOption = {
   base: '.',
   allowEmpty: true
 }
 
 //复制依赖的node_modules文件
 gulp.task('copyNodeModules', cb => {
-  return nodeModulesCopyPath.length > 0
-    ? gulp.src(nodeModulesCopyPath, copyNodeModuleOption).pipe(gulp.dest(dist))
-    : cb()
+  if (Object.keys(dependencies).length > 0) {
+    //   https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html
+    console.log('-------小程序依赖npm 请在微信开发者工具中构建npm--------')
+    return gulp
+      .src(nodeModulesCopyPath, copyNodeModuleOption)
+      .pipe(gulp.dest(dist))
+  } else {
+    return cb()
+  }
 })
 //复制依赖的node_modules文件(只改动有变动的文件）
 gulp.task('copyNodeModulesChange', () => {
+  // https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html
+  console.log('-------小程序依赖npm 请在微信开发者工具中构建npm--------')
   return gulp
     .src(nodeModulesCopyPath, copyNodeModuleOption)
     .pipe(changed(dist))
@@ -92,17 +99,20 @@ gulp.task('copyNodeModulesChange', () => {
 })
 
 // 根据denpende生成package.json
-gulp.task('generatePackageJson', () => {
-  return gulp
-    .src('./package.json')
-    .pipe(
-      jsonTransform(function(data, file) {
-        return {
-          dependencies: dependencies
-        }
-      })
-    )
-    .pipe(gulp.dest(dist))
+gulp.task('generatePackageJson', cb => {
+  return Object.keys(dependencies).length > 0
+    ? gulp
+        .src('./package.json')
+        .pipe(
+          jsonTransform(function(data, file) {
+            return {
+              desc: '小程序使用npm的依赖, 使用前请先构建npm, 工具 => 构建npm',
+              dependencies: dependencies
+            }
+          })
+        )
+        .pipe(gulp.dest(dist))
+    : cb()
 })
 
 // -------------------------------------------------------------------
@@ -250,7 +260,7 @@ gulp.task('watch', () => {
   gulp.watch(cssPath, gulp.series('cssChangeTask')) // Change css
 
   var watcher = gulp.watch(copyPath, gulp.series('copyChangeTask'))
-  nodeModulesCopyPath.length > 0 &&
+  Object.keys(dependencies).length > 0 &&
     gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'))
 
   watcher.on('change', function(event) {
