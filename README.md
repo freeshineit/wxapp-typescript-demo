@@ -41,7 +41,7 @@ npm run build
 .
 ├── dist //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
 ├── src
-│   ├── app.json
+│   ├── app.json // 小程序全局配置
 │   ├── app.scss // 小程序全局样式 微信开发者工具不支持 sass less 文件
 │   ├── app.ts // 小程序起始文件
 │   ├── components // 组件
