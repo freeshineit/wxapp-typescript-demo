@@ -1,4 +1,4 @@
-//logs.js
+//logs.ts
 import { formatTime } from '../../utils/util'
 
 Page({
