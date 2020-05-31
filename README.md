@@ -3,7 +3,10 @@
 - 使用 [gulp](https://gulpjs.com/) 构建（支持 [typescript](https://www.typescriptlang.org/) 和 [less](http://lesscss.org/)）
 - 使用 [typescript](https://www.typescriptlang.org/) 编译
 - 使用 [tslint](https://palantir.github.io/tslint/) + [prettier](https://prettier.io/) 格式代码规范
-- 使用 [miniprogram-api-typings](https://www.npmjs.com/package/miniprogram-api-typings) 微信小程序 API 的 `TypeScript` 类型定义文件
+- <del>使用 [miniprogram-api-typings](https://www.npmjs.com/package/miniprogram-api-typings) 微信小程序 API 的 `TypeScript` 类型定义文件</del>
+- 下载 [miniprogram-api-typings](https://www.npmjs.com/package/miniprogram-api-typings) 微信小程序 API 的 `TypeScript` 类型定义文件,复制类型文件放置在 `typings` 文件下
+
+- [`./typings/lib.wx.qy.api.d.ts`](./typings/lib.wx.qy.api.d.ts) 企业微信小程序 api
 
 ```sh
 # 安装依赖

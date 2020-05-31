@@ -5,7 +5,8 @@
     "pages/request/index",
     "pages/logs/index",
     "pages/style/index",
-    "pages/lifecycle/index"
+    "pages/lifecycle/index",
+    "pages/qywx/index"
   ],
   "window_desc": "页面配置 请参考文档 https://developers.weixin.qq.com/miniprogram/dev/reference/configuration/page.html",
   "window": {
