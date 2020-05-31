@@ -55,14 +55,6 @@ gulp.task('clearTask', () => {
 gulp.task('copyTask', () => {
   return gulp.src(copyPath, option).pipe(gulp.dest(dist))
 })
-
-// 复制不包含less、scss、sass、css、ts和图片的文件(只改动有变动的文件）
-gulp.task('copyChangeTask', () => {
-  return gulp
-    .src(copyPath, option)
-    .pipe(changed(dist))
-    .pipe(gulp.dest(dist))
-})
 // -------------------------------------------------------------------
 
 // --------------------增加dependencies--------------------------------
@@ -137,45 +129,10 @@ gulp.task('lessTask', () => {
     .pipe(gulp.dest(dist))
 })
 
-// 编译less(只改动有变动的文件）
-gulp.task('lessChangeTask', () => {
-  return gulp
-    .src(lessPath, option)
-    .pipe(changed(dist))
-    .pipe(
-      less().on('error', function(e) {
-        console.error(e.message)
-        this.emit('end')
-      })
-    )
-    .pipe(postcss([autoprefixer]))
-    .pipe(
-      rename(function(path) {
-        path.extname = '.wxss'
-      })
-    )
-    .pipe(gulp.dest(dist))
-})
-
 // 编译sass scss
 gulp.task('sassTask', () => {
   return gulp
     .src(sassPath, option)
-    .pipe(sass().on('error', sass.logError))
-    .pipe(postcss([autoprefixer]))
-    .pipe(
-      rename(function(path) {
-        path.extname = '.wxss'
-      })
-    )
-    .pipe(gulp.dest(dist))
-})
-
-// 编译sass scss(只改动有变动的文件）
-gulp.task('sassChangeTask', () => {
-  return gulp
-    .src(sassPath, option)
-    .pipe(changed(dist))
     .pipe(sass().on('error', sass.logError))
     .pipe(postcss([autoprefixer]))
     .pipe(
@@ -199,19 +156,6 @@ gulp.task('cssTask', () => {
     .pipe(gulp.dest(dist))
 })
 
-// 编译css(只改动有变动的文件）
-gulp.task('cssChangeTask', () => {
-  return gulp
-    .src(cssPath, option)
-    .pipe(changed(dist))
-    .pipe(postcss([autoprefixer]))
-    .pipe(
-      rename(function(path) {
-        path.extname = '.wxss'
-      })
-    )
-    .pipe(gulp.dest(dist))
-})
 // -------------------------------------------------------------------
 
 // -----------------------复制压缩image-------------------------------------
@@ -219,7 +163,6 @@ gulp.task('cssChangeTask', () => {
 gulp.task('imagesTask', () => {
   return gulp
     .src(imagePath, option)
-    .pipe(changed(dist))
     .pipe(
       imagemin({
         optimizationLevel: 5, //类型：Number  默认：3  取值范围：0-7（优化等级）
@@ -240,26 +183,17 @@ gulp.task('tsTask', function() {
     .js.pipe(sourcemaps.write())
     .pipe(gulp.dest(dist))
 })
-
-gulp.task('tsChangeTask', function() {
-  return tsProject
-    .src()
-    .pipe(changed(tsPath))
-    .pipe(gulpif(process.env.NODE_ENV === 'development', sourcemaps.init()))
-    .pipe(tsProject())
-    .js.pipe(sourcemaps.write())
-    .pipe(gulp.dest(dist))
-})
 // --------------------------- end ts编译 ----------------------------------------
 
 //监听
 gulp.task('watch', () => {
-  gulp.watch(tsPath, gulp.series('tsChangeTask')) // Change ts
-  gulp.watch(lessPath, gulp.series('lessChangeTask')) // Change less
-  gulp.watch(sassPath, gulp.series('sassChangeTask')) // Change sass
-  gulp.watch(cssPath, gulp.series('cssChangeTask')) // Change css
+  gulp.watch(tsPath, gulp.series('tsTask')) // Change ts
+  gulp.watch(lessPath, gulp.series('lessTask')) // Change less
+  gulp.watch(sassPath, gulp.series('sassTask')) // Change sass
+  gulp.watch(cssPath, gulp.series('cssTask')) // Change css
 
-  var watcher = gulp.watch(copyPath, gulp.series('copyChangeTask'))
+  var watcher = gulp.watch(copyPath, gulp.series('copyTask'))
+
   Object.keys(dependencies).length > 0 &&
     gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'))
 
