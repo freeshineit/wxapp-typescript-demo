@@ -27,7 +27,6 @@
     "gulp-typescript": "^5.0.1",
     "husky": "^1.1.4",
     "lint-staged": "^10.0.8",
-    "miniprogram-api-typings": "^2.10.2",
     "node-sass": "^4.14.1",
     "path": "^0.12.7",
     "prettier": "^1.15.2",

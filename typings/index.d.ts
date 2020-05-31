@@ -1,1 +1,2 @@
-//  小程序的types miniprogram-api-typings
+/// <reference path="./wx/index.d.ts" />
+/// <reference path="./lib.wx.qy.api.d.ts" />
