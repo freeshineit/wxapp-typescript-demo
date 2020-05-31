@@ -33,7 +33,8 @@ npm run build
     "pages/request/index", // request 简单调用接口页面
     "pages/logs/index",  // logs demo
     "pages/style/index", // 样式 demo
-    "pages/lifecycle/index" // 生命周期 demo
+    "pages/lifecycle/index", // 生命周期 demo
+    "pages/qywx/index" // 企业微信小程序 demo
   ]
 }
 ```
@@ -58,6 +59,8 @@ npm run build
 │   │   ├── index // 首页
 │   │   ├── logs // 日志页
 │   │   └── request // 简单调用接口页面
+│   │   └── lifecycle // 小程序生命周期页面
+│   │   └── qywx // 企业微信小程序页面
 │   └── utils // 工具方法
 ├── README.md // 项目说明
 ├── gulpfile.js // gulp 配置
