@@ -1,6 +1,4 @@
 <!-- qywx.wxml -->
 <view class="container log-list">
-    <block wx:for="{{logs}}" wx:for-item="log" wx:key="{{index}}">
-        <text class="log-item">{{index + 1}}. {{dateFr.getDate(log, ':')}} {{log}}</text>
-    </block>
+    <view>企业微信</view>
 </view>
