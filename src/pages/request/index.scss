@@ -3,10 +3,21 @@
   justify-content: center;
   flex-direction: column;
 
+  .list {
+    flex: 1;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
   .image {
     width: 95%;
-    // image {
-    //   width: 100%;
-    // }
+    display: flex;
+    margin-bottom: 20rpx;
+
+    image {
+      width: 100%;
+    }
   }
 }
