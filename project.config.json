@@ -11,6 +11,7 @@
 		"urlCheck": false,
 		"es6": true,
 		"postcss": true,
+		"preloadBackgroundData": false,
 		"minified": true,
 		"newFeature": true,
 		"coverView": true,
@@ -26,9 +27,11 @@
 			"ignore": [],
 			"disablePlugins": [],
 			"outputPath": ""
-		}
+		},
+		"useCompilerModule": true,
+		"userConfirmedUseCompilerModuleSwitch": false
 	},
-	"simulatorType": "wechat",
+	"simulatorType": "qywx_simulator_plugin",
 	"simulatorPluginLibVersion": {
 		"qywx_simulator_plugin": "2.4.0"
 	},
@@ -72,12 +75,20 @@
 					"id": 1,
 					"name": "pages/style/index",
 					"pathName": "pages/style/index",
+					"query": "",
 					"scene": null
 				},
 				{
 					"id": 2,
 					"name": "pages/lifecycle/index",
 					"pathName": "pages/lifecycle/index",
+					"query": "",
+					"scene": null
+				},
+				{
+					"id": -1,
+					"name": "pages/qywx/index",
+					"pathName": "pages/qywx/index",
 					"scene": null
 				}
 			]
