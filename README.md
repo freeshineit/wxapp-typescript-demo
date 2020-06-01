@@ -1,6 +1,6 @@
 小程序 Start
 
-- 使用 [gulp](https://gulpjs.com/) 构建（支持 [typescript](https://www.typescriptlang.org/) 和 [less](http://lesscss.org/)）
+- 使用 [gulp](https://gulpjs.com/) 构建（支持 [typescript](https://www.typescriptlang.org/) 和 [less](http://lesscss.org/) 或 [sass](https://sass-lang.com/) 或 css）
 - 使用 [typescript](https://www.typescriptlang.org/) 编译
 - 使用 [tslint](https://palantir.github.io/tslint/) + [prettier](https://prettier.io/) 格式代码规范
 - <del>使用 [miniprogram-api-typings](https://www.npmjs.com/package/miniprogram-api-typings) 微信小程序 API 的 `TypeScript` 类型定义文件</del>
@@ -43,10 +43,10 @@ npm run build
 
 ```
 .
-├── dist //编译之后的项目文件（带 sorcemap，支持生产环境告警定位
+├── dist // 编译之后的项目文件（带 sorcemap，支持生产环境告警定位)
 ├── src
 │   ├── app.json // 小程序全局配置
-│   ├── app.scss // 小程序全局样式 微信开发者工具不支持 sass less 文件
+│   ├── app.scss // 小程序全局样式
 │   ├── app.ts // 小程序起始文件
 │   ├── components // 组件
 │   ├── config // 配置
