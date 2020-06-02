@@ -83,7 +83,25 @@ npm run build
 - 组件的`externalClasses`(外部类) 命名属性都使用`v-class`
 - 页面布局一律使用 flex 布局
 
-### npm 的使用请切换分支[has_npm](https://github.com/freeshineit/wxapp-typescript-start/tree/has_npm)
+## npm 使用
+
+- 安装 npm 以`wxml-to-canvas`为列
+
+```sh
+npm install wxml-to-canvas
+```
+
+- 微信小程序[npm](https://developers.weixin.qq.com/miniprogram/dev/devtools/npm.html)支持, (工具 --> 构建 npm， 勾选“使用 npm 模块”选项， 构建完成后即可使用 npm 包。)
+
+- 使用
+
+```json
+{
+  "usingComponents": {
+    "wxml-to-canvas": "wxml-to-canvas"
+  }
+}
+```
 
 ## 框架扩展
 
