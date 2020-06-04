@@ -191,6 +191,7 @@ gulp.task('watch', () => {
   gulp.watch(lessPath, gulp.series('lessTask')) // Change less
   gulp.watch(sassPath, gulp.series('sassTask')) // Change sass
   gulp.watch(cssPath, gulp.series('cssTask')) // Change css
+  gulp.watch(imagePath, gulp.series('imagesTask')) // Change image
 
   var watcher = gulp.watch(copyPath, gulp.series('copyTask'))
 
