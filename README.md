@@ -62,8 +62,8 @@ npm run build
 │   ├── pages // 页面
 │   │   ├── index // 首页
 │   │   ├── logs // 日志页
-│   │   └── request // 简单调用接口页面
-│   │   └── lifecycle // 小程序生命周期页面
+│   │   ├── request // 简单调用接口页面
+│   │   ├── lifecycle // 小程序生命周期页面
 │   │   └── qywx // 企业微信小程序页面
 │   └── utils // 工具方法
 ├── README.md // 项目说明
@@ -72,8 +72,10 @@ npm run build
 ├── project.config.json // 小程序 配置
 ├── tsconfig.json // typescript 配置
 ├── tslint.json // 代码风格配置
-├── typings //ts typings 当前文件没有微信小程序 types，类型使用 miniprogram-api-typings，微信开发者工具会提示报错
-│   └── index.d.ts
+└── typings //ts typings 当前文件没有
+    ├── wx // 微信小程序 types
+    ├── lib.wx.qy.api.d.ts // 企业微信小程序 types
+    └── index.d.ts
 
 ```
 
