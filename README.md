@@ -53,7 +53,7 @@ npm run build
 │   ├── app.ts // 小程序起始文件
 │   ├── components // 组件
 │   ├── config // 配置
-│   │   ├── env.ts // 存储环境变量文件 （格式固定不要试图改动）
+│   │   └── env.ts // 存储环境变量文件 （格式固定不要试图改动）
 │   ├── models // 接口模型
 │   ├── filter // 过滤器
 │   ├── templates // 模版
