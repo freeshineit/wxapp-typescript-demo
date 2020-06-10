@@ -14,6 +14,7 @@ const tsProject = ts.createProject('tsconfig.json')
 const sourcemaps = require('gulp-sourcemaps')
 const jsonTransform = require('gulp-json-transform')
 const gulpif = require('gulp-if')
+const replace = require('gulp-replace')
 const projectConfig = require('./package.json')
 sass.compiler = require('node-sass')
 
@@ -43,6 +44,8 @@ const sassPath = ['src/**/*.{scss,sass}', 'src/app.{scss,sass}']
 const cssPath = ['src/**/*.css', 'src/app.css']
 // ts
 const tsPath = ['src/**/*.ts', 'src/app.ts']
+// 环境变量
+const replacePath = ['src/config/env.ts']
 
 // --------------------清空目录--------------------------------
 gulp.task('clearTask', () => {
@@ -50,6 +53,15 @@ gulp.task('clearTask', () => {
 })
 
 // ---------------------------------------------------------
+
+// --------------------环境变量--------------------------------
+gulp.task('replaceEnv', () => {
+  return gulp
+    .src(replacePath)
+    .pipe(replace(/(['"]{1}(\w+)\s*['"]{1})/g, `'${process.env.NODE_ENV}'`))
+    .pipe(gulp.dest('src/config'))
+})
+// ------------------------------------------------------------
 
 // --------------复制不包含less、scss、sass、css、ts和图片的文件------------------
 gulp.task('copyTask', () => {
@@ -216,6 +228,7 @@ gulp.task(
   gulp.series(
     // sync
     'clearTask',
+    'replaceEnv',
     gulp.parallel(
       'copyTask',
       'copyNodeModules',
@@ -236,6 +249,7 @@ gulp.task(
   gulp.series(
     // sync
     'clearTask',
+    'replaceEnv',
     gulp.parallel(
       // async
       'copyTask',

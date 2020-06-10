@@ -20,6 +20,9 @@ npm run dev
 
 # 需要在小程序开发工具里【工具】-【构建npm】 （如果使用到npm ）
 
+# 打包测试代码
+npm run build:release
+
 # 打包代码
 npm run build
 ```
@@ -50,6 +53,7 @@ npm run build
 │   ├── app.ts // 小程序起始文件
 │   ├── components // 组件
 │   ├── config // 配置
+│   │   ├── env.ts // 存储环境变量文件 （格式固定不要试图改动）
 │   ├── models // 接口模型
 │   ├── filter // 过滤器
 │   ├── templates // 模版
@@ -74,6 +78,16 @@ npm run build
 ```
 
 **注意：`package.json`中的`dependencies`字段，依赖的包会被自动打包到`dist`里。**
+
+## 环境变量说明
+
+从`@1.2.4`开始支持环境变量, 变量存储在`src/config/env.ts`中.
+
+- 运行 `npm run dev` 或者`npm run start` 时, 环境变量会替换为`development`
+- 运行 `npm run build:release` 时, 打包测试环境,环境变量会替换为`release`
+- 运行 `npm run build`, 打包正试环境,环境变量会替换为`production`
+
+说明： `src/config/env.ts`中的值会在`gulp-typescript`编译之前被替换成当前`process.env.NODE_ENV`对应的值
 
 ## 公共库使用说明
 

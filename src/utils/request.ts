@@ -1,4 +1,5 @@
-import { api_url } from '../config/index'
+import { DEV_BASE_URL, PROD_BASE_URL } from '../config/index'
+import { ENV } from '../config/env'
 
 export interface RequestOption {
   url: string
@@ -18,17 +19,17 @@ export interface RequestOption {
 }
 
 class Request {
-  private baseRestUrl: string
+  private baseURL: string
   constructor() {
-    this.baseRestUrl = api_url
+    this.baseURL = ENV === 'production' ? PROD_BASE_URL : DEV_BASE_URL
   }
 
   //http 请求类, 当noRefech为true时，不做未授权重试机制
   request(params: RequestOption) {
-    let url = this.baseRestUrl + params.url
+    let url = this.baseURL + params.url
     let header = {
       'content-type': 'application/json'
-      // toekn
+      // token
     }
     let method = params.method || 'GET'
     let data = params.data
