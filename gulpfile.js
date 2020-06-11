@@ -200,26 +200,54 @@ gulp.task('tsTask', function() {
 //监听
 gulp.task('watch', () => {
   gulp.watch(tsPath, gulp.series('tsTask')) // Change ts
-  gulp.watch(lessPath, gulp.series('lessTask')) // Change less
-  gulp.watch(sassPath, gulp.series('sassTask')) // Change sass
-  gulp.watch(cssPath, gulp.series('cssTask')) // Change css
-  gulp.watch(imagePath, gulp.series('imagesTask')) // Change image
 
-  var watcher = gulp.watch(copyPath, gulp.series('copyTask'))
+  const lessWatcher = gulp.watch(lessPath, gulp.series('lessTask')) // Change less
 
+  //   lessWatcher.on('unlink', function(filepath, stats) {
+  //     console.log(`File ${path} was removed`)
+  //     filepath = filepath.replace(/.less/, 'wxss')
+  //     const filePathFromSrc = path.relative(path.resolve('src'), filepath)
+  //     const destFilePath = path.resolve('dist', filePathFromSrc)
+  //     del.sync(destFilePath)
+  //   })
+
+  const sassWatcher = gulp.watch(sassPath, gulp.series('sassTask')) // Change sass
+
+  //   sassWatcher.on('unlink', function(filepath, stats) {
+  //     console.log(`File ${path} was removed`)
+  //     filepath = filepath.replace(/.sass|.scss/, '.wxss')
+  //     const filePathFromSrc = path.relative(path.resolve('src'), filepath)
+  //     const destFilePath = path.resolve('dist', filePathFromSrc)
+  //     del.sync(destFilePath)
+  //   })
+
+  const cssWatcher = gulp.watch(cssPath, gulp.series('cssTask')) // Change css
+  //   cssWatcher.on('unlink', function(filepath, stats) {
+  //     console.log(`File ${path} was removed`)
+  //     filepath = filepath.replace(/.css/, '.wxss')
+  //     const filePathFromSrc = path.relative(path.resolve('src'), filepath)
+  //     const destFilePath = path.resolve('dist', filePathFromSrc)
+  //     del.sync(destFilePath)
+  //   })
+
+  const imageWatcher = gulp.watch(imagePath, gulp.series('imagesTask')) // Change image
+  //   imageWatcher.on('unlink', function(filepath, stats) {
+  //     console.log(`File ${path} was removed`)
+  //     const filePathFromSrc = path.relative(path.resolve('src'), filepath)
+  //     const destFilePath = path.resolve('dist', filePathFromSrc)
+  //     del.sync(destFilePath)
+  //   })
+
+  const copyWatcher = gulp.watch(copyPath, gulp.series('copyTask'))
   Object.keys(dependencies).length > 0 &&
     gulp.watch(nodeModulesCopyPath, gulp.series('copyNodeModulesChange'))
 
-  watcher.on('change', function(event) {
-    if (event.type === 'deleted') {
-      var filepath = event.path
-      var filePathFromSrc = path.relative(path.resolve('src'), filepath)
-      // Concatenating the 'build' absolute path used by gulp.dest in the scripts task
-      var destFilePath = path.resolve('dist', filePathFromSrc)
-      // console.log({filepath, filePathFromSrc, destFilePath})
-      del.sync(destFilePath)
-    }
-  })
+  //   copyWatcher.on('unlink', function(filepath, stats) {
+  //     console.log(`File ${path} was removed`)
+  //     const filePathFromSrc = path.relative(path.resolve('src'), filepath)
+  //     const destFilePath = path.resolve('dist', filePathFromSrc)
+  //     del.sync(destFilePath)
+  //   })
 })
 
 //开发并监听
